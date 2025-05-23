@@ -1,20 +1,21 @@
 clear all
 
-N = 7;
-J = @(x,u) (1/2)*sum(x(1:N).^2 + 3*u.^2);
-x0 = 20;
+N = 7;                                      % Liczba sterowań
+J = @(x,u) (1/2)*sum(x(1:N).^2 + 3*u.^2);   % Podstawowy wskaźnik jakości
+x0 = 20;                                    
 u0 = ones(1,N);
+%u0 = [2, 3, -2, -1, 4, -4, 1];
 x = zeros(1,N+1);
 a = [1,11,4,4,-1];
 
 alfa = 0.5;
-beta = 2;
+beta = 4;
 eps = 0.1;
 
-c = 2;
-t = [0.5 ,0.5];
+c = 1;
+t = [18 ,13];
 v = a;
-T = 
+T(1,:) = t;
 
 iter = 1;
 while true
@@ -47,6 +48,7 @@ while true
         v = a -(1/beta)*r;
     end
     iter = iter + 1;
+    T(iter,:) = t;
 end
 
 figure
